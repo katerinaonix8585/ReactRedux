@@ -1,11 +1,11 @@
 import Counter from "components/Counter/Counter";
 import { useState } from "react";
 
-function Lesson16() {    
+function Homework16() {    
 
     return (
         <Counter />
     )
 }
 
-export default Lesson16;
+export default Homework16;
