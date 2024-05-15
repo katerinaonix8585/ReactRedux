@@ -1,44 +1,68 @@
-import "./styles.ts";
-import { ButtonControl, CounterResult, CounterWrapper } from "./styles";
 import Button from "components/Button/Button";
-import { useState } from "react";
-
+import { ButtonControl, CounterResult, CounterWrapper } from "./styles";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { counterSliceSelectors, counterSliceActions } from "store/redux/counter/counterSlice";
+// import { useState } from "react";
 
 function Counter() {
+  // Вариант контроля компонента через redux
+  //8. Забираем значение count из стора
+  const count = useAppSelector(counterSliceSelectors.count)
+  //9. Создать функцию dispatch, которая диспачить экшен
+  const dispatch = useAppDispatch();
 
-  const [value, setValue] = useState<number>(0)
+  console.log(counterSliceActions)
 
-  const onMinus  = () => {
-      setValue(prevValue => prevValue - 1)
+  const multiplyValue = 5;
+
+  //10. Создаём функции, которые будут диспатчить определённые экшены в
+  // ответ на действия эшен криэйтеров (кнопок)
+  const onPlus = () => {
+    // 11. Диспатчим экшен, для вызова редьюсера, который отвечает з алогику увеличения каунтера на 1
+    dispatch(counterSliceActions.add())
   }
 
-  const onPlus = () => {
-      setValue(prevValue => prevValue + 1)
-  }  
-
-  const onDivide = () => {
-    setValue((prevValue) => Math.round((prevValue / 2) * 100) / 100);
-  }  
+  const onMinus = () => {
+    dispatch(counterSliceActions.minus())
+  }
 
   const onMultiply = () => {
-    setValue((prevValue) => Math.round((prevValue * 2) * 100) / 100);
-  }  
+    dispatch(counterSliceActions.multiply(multiplyValue))
+  }
 
-  
+  const onDivide = () => {
+    dispatch(counterSliceActions.divide())
+  }
+
+  // Вариант контроля компонента через локальное хранилище useState
+  // const [count, setCount] = useState<number>(0);
+
+  // const onMinus = () => {
+  //   setCount(prevValue => prevValue - 1)
+  // }
+
+  // const onPlus = () => {
+  //   setCount(prevValue => prevValue + 1)
+  // }
+
+  // const onMultiply = () => {
+  //   setCount(prevValue => prevValue * 2)
+  // }
+
+  // const onDivide = () => {
+  //   setCount(prevValue => Number((prevValue / 2).toFixed(2)))
+  // }
+
   return (
     <CounterWrapper>
       <ButtonControl>
-        <Button name="/" onButtonClick={onDivide}/>
+        <Button onButtonClick={onMinus} name="-" />
+        <Button onButtonClick={onDivide} name="/" />
       </ButtonControl>
+      <CounterResult>{count}</CounterResult>
       <ButtonControl>
-        <Button name="-" onButtonClick={onMinus}/>
-      </ButtonControl>
-      <CounterResult>{value}</CounterResult>
-      <ButtonControl>
-        <Button name="+" onButtonClick={onPlus}/>
-      </ButtonControl>
-      <ButtonControl>
-        <Button name="*" onButtonClick={onMultiply}/>
+        <Button onButtonClick={onPlus} name="+" />
+        <Button onButtonClick={onMultiply} name={`* ${multiplyValue}`} />
       </ButtonControl>
     </CounterWrapper>
   );
