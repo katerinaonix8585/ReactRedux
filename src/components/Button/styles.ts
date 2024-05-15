@@ -14,5 +14,5 @@ export const ButtonComponent = styled.button<ButtonComponent>`
   background: ${({disabled})=>disabled?"grey" : "#1f27f5"};
   color: white;
   font-size: 16px;
-  cursor: pointer;
+  cursor: pointer;  
 `;
