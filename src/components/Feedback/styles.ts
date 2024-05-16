@@ -29,4 +29,15 @@ export const Result = styled.div`
 `;
 
 
+export const ImageContainer = styled.div`
+  display: flex;
+  gap: 10px;  
+  align-items: center;  
+  width: 100%;
+`;
+
+export const Image = styled.img`
+  width: 100%;
+`;
+
 

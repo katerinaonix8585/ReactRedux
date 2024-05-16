@@ -14,7 +14,8 @@ initialState: feedbackInitialState,
 reducers: create => ({
     addLike: create.reducer((state: FeedbackStateSlice)=>{state.like = state.like + 1}),
     addDislike: create.reducer((state: FeedbackStateSlice)=>{state.dislike = state.dislike + 1}), 
-    resetResults: create.reducer((state: FeedbackStateSlice)=>{state.like = 0, state.dislike = 0}),    
+    // resetResults: create.reducer((state: FeedbackStateSlice)=>{state.like = 0, state.dislike = 0}),    
+    resetResults: create.reducer(()=> feedbackInitialState),  
    }),
    selectors: {
     like: (state: FeedbackStateSlice) => state.like,

@@ -1,11 +1,27 @@
-// import Lesson16 from "lessons/Lesson16/Lesson16";
+import Home from "pages/UsersApp/Home/Home"
+import Layout from "pages/UsersApp/Layout/Layout"
+import Users from "pages/UsersApp/Users/Users"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import GlobalStyles from "styles/GlobalStyles"
 
-import Homework17 from "homeworks/Homework17/Homework17"
-
-const App = () => {
+function App () {
   return (
-    // <Lesson16 /> 
-    <Homework17 />   
+    <>
+    <BrowserRouter>
+      <GlobalStyles />
+        <Layout>
+        
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/users' element={<Users />}/>          
+          <Route path='*' element='Page Not Found'/>
+        </Routes>        
+
+      </Layout>      
+      </BrowserRouter>
+    
+    </>
+  
   )
 }
 

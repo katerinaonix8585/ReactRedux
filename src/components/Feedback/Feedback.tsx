@@ -1,7 +1,8 @@
 import Button from "components/Button/Button"
-import { FeedbackContainer, FeedbackResultContainer, LikeDislikeContainer, Result,  } from "./styles";
+import { FeedbackContainer, FeedbackResultContainer, ImageContainer, Image, LikeDislikeContainer, Result,  } from "./styles";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { feedbackSliceActions, feedbackSliceSelectors } from "store/redux/feedback/feedbackSlice";
+import { IconFingerUp } from "assets";
 
 function Feedback() {
   
@@ -26,6 +27,9 @@ function Feedback() {
  return (
     <FeedbackContainer>
       <FeedbackResultContainer>
+        {/* <ImageContainer>
+          <Image src={IconFingerUp} alt="like"  />
+        </ImageContainer> */}
         <LikeDislikeContainer>
           <Button name="Like" onButtonClick={addLike} />
           <Result>{like}</Result>
