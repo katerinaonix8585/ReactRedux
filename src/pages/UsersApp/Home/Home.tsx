@@ -13,8 +13,6 @@ import { v4 } from "uuid";
 
 function Home() {
 
-  // const usersike = useAppSelector(usersSliceSelectors());
-
   const dispatch = useAppDispatch();
 
   const formik = useFormik({
@@ -23,8 +21,13 @@ function Home() {
       age: "",
       jobTitle: "",
     },
-    onSubmit: (values) => {
-      dispatch(usersSliceActions.addUser({...values, id: v4()}))
+    onSubmit: (values, {resetForm}) => {
+      if (values.firstlastName && values.age && values.jobTitle){
+      dispatch(usersSliceActions.addUser({...values, id: v4()})); 
+      resetForm();
+    } else {
+      alert("Заполните поля формы");
+    }
     },
   })
 

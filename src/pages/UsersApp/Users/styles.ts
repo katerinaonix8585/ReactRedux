@@ -8,6 +8,14 @@ export const UsersPageWrapper = styled.div`
   gap: 24px;
 `
 
+export const UsersCardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  height: fit-content;
+  gap: 24px;
+`
+
 export const UserCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,3 +32,5 @@ export const Paragraph = styled.p`
   overflow: hidden;
   font-size: 16px;
 `
+
+
