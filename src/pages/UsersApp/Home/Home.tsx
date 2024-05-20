@@ -21,13 +21,14 @@ function Home() {
       age: "",
       jobTitle: "",
     },
-    onSubmit: (values, {resetForm}) => {
+    onSubmit: (values, helpers) => {
       if (values.firstlastName && values.age && values.jobTitle){
       dispatch(usersSliceActions.addUser({...values, id: v4()})); 
-      resetForm();
+      
     } else {
       alert("Заполните поля формы");
     }
+    helpers.resetForm();
     },
   })
 

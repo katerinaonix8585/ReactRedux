@@ -11,11 +11,15 @@ function Users() {
 
   const dispatch = useAppDispatch();
 
-  const usersCardElements = users.map((users: UserData) => {
+  const usersCardElements = users.map((user: UserData) => {
+    const deleteUser = () => {
+      dispatch(usersSliceActions.deleleUser(user.id))
+    }
     return <UserCard key={v4()}>
-              <Paragraph>{users.firstlastName}</Paragraph>
-              <Paragraph>{users.age}</Paragraph>
-              <Paragraph>{users.jobTitle}</Paragraph>
+              <Paragraph>{user.firstlastName}</Paragraph>
+              <Paragraph>{user.age}</Paragraph>
+              <Paragraph>{user.jobTitle}</Paragraph>
+              <Button name='Delete' onButtonClick={deleteUser}></Button>
            </UserCard>
   })
 

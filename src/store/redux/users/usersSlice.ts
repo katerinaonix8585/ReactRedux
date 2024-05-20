@@ -1,6 +1,6 @@
 import { createAppSlice } from "store/createAppSlice";
 import { UserData, UsersSliceState } from "./types";
-import { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createReducer } from "@reduxjs/toolkit";
 
 const usersInitialState: UsersSliceState = {
     users: []
@@ -13,7 +13,11 @@ export const usersSlice = createAppSlice({
     reducers: create=>({
        addUser: create.reducer((state: UsersSliceState, action: PayloadAction<UserData>)=>{
         state.users = [...state.users, action.payload]}),
-        deleteAllUser: create.reducer(()=>usersInitialState)}),
+        deleteAllUser: create.reducer(()=>usersInitialState),
+        deleleUser: create.reducer((state: UsersSliceState, action: PayloadAction<string>)=>{
+            state.users = state.users.filter((user)=>user.id !== action.payload)
+        })
+    }),        
     selectors: {
         users: (state: UsersSliceState) => state.users
     }
