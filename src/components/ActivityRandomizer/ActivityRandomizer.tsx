@@ -3,7 +3,7 @@ import { ActivityCard, ActivityCardWrapper, ActivityRandomizerWrapper, ActivityT
 import { activityRandomizerSliceActions, activityRandomizerSliceSelectors } from "store/redux/activityRandomizer/activityRandomizerSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import Spinner from "components/Spinner/Spinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function ActivityRandomizer () {
 
@@ -37,6 +37,12 @@ function ActivityRandomizer () {
         dispatch(activityRandomizerSliceActions.deleteAllActivities())    
       }
     
+      useEffect(() => {
+        if (error) {
+          alert('Error response')
+        }
+      }, [error]) 
+         
 
     return (
         <ActivityRandomizerWrapper>
