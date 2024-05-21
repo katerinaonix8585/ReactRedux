@@ -4,13 +4,14 @@ import { counterSlice } from "./redux/counter/counterSlice"
 import { feedbackSlice } from "./redux/feedback/feedbackSlice"
 import { usersSlice } from "./redux/users/usersSlice"
 import { randomJokesSlice } from "./redux/randomJokes/randomJokesSlice"
+import { activityRandomizerSlice } from "./redux/activityRandomizer/activityRandomizerSlice"
 
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 //Здесь будут соединять все слайсы, которые отвечают за определенные данные (counter, userData...)
 //7. Добавить слайс в глобальную настройку (в вызов функции combineSlices), для соединения с другими слайсами
-const rootReducer = combineSlices(counterSlice, feedbackSlice, usersSlice, randomJokesSlice)
+const rootReducer = combineSlices(counterSlice, feedbackSlice, usersSlice, randomJokesSlice, activityRandomizerSlice)
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 
